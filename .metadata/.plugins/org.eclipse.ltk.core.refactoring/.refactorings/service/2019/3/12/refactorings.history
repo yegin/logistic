@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Extract local variable &apos;example&apos; from expression &apos;new RoleExample()&apos;&#x0D;&#x0A;- Original project: &apos;service&apos;&#x0D;&#x0A;- Variable name: &apos;example&apos;&#x0D;&#x0A;- Destination method: &apos;com.sxt.service.impl.RoleServiceImpl.query()&apos;&#x0D;&#x0A;- Variable expression: &apos;new RoleExample()&apos;&#x0D;&#x0A;- Replace occurrences of expression with variable" description="Extract local variable &apos;example&apos;" final="false" id="org.eclipse.jdt.ui.extract.temp" input="/src\/main\/java&lt;com.sxt.service.impl{RoleServiceImpl.java" name="example" replace="true" selection="451 0" stamp="1553162038109" version="1.0"/>
+</session>

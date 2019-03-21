@@ -1,0 +1,30 @@
+package com.sxt.service.impl;
+
+import java.util.List;
+
+import com.sxt.pojo.Role;
+import com.sxt.service.IRoleService;
+
+public class RoleServiceImpl implements IRoleService{
+
+	public List<Role> query(Role role) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void addRole(Role role) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void updateRole(Role role) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void deleteRole(int id) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

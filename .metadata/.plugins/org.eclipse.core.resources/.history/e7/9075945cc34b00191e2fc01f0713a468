@@ -1,0 +1,30 @@
+package com.sxt.controller;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.sxt.pojo.Role;
+import com.sxt.service.IRoleService;
+
+@Controller
+public class PageController {
+	
+	@Resource
+	private IRoleService roleService;
+	
+	@RequestMapping("/")
+	public String showMain(){
+		return "main";
+	}
+	
+	@RequestMapping("/{path}")
+	public String showPage(@PathVariable String path){
+		return path;
+	}
+}

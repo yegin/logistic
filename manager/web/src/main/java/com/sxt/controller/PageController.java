@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class PageController {
 	
+	
+	
 	@RequestMapping("/")
 	public String showMain(){
 		return "main";
@@ -16,5 +18,4 @@ public class PageController {
 	public String showPage(@PathVariable String path){
 		return path;
 	}
-	
 }

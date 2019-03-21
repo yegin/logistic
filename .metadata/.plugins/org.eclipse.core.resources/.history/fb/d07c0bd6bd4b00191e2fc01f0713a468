@@ -1,0 +1,7 @@
+package com.sxt.service;
+
+public interface IRoleService {
+
+	public List
+	
+}
