@@ -85,7 +85,7 @@ $(document).ready(function(){
 			</thead>
 
 			<tbody>
-				<c:forEach items="${list }" var="user">
+				<c:forEach items="${pageModel.list }" var="user">
 					<tr>
 						<td><input name="" type="checkbox" value="" /></td>
 						<td>${user.userId }</td>
@@ -94,14 +94,20 @@ $(document).ready(function(){
 						<td>${user.password }</td>
 						<td>${user.email }</td>
 						<td>${user.phone }</td>
-						<td><a href="#" class="tablelink">查看</a> <a href="#"
-							class="tablelink"> 删除</a></td>
+						<td><a href="/user/userUpdate?id=${user.userId }" class="tablelink">修改</a> 
+						<a href="javascript:void(0)" onclick="deleteUser(${user.userId})"class="tablelink"> 删除</a></td>
 					</tr>
 				</c:forEach>
-
 			</tbody>
 		</table>
 
+		<div class="inline pull-right page" style="margin-top: 20px;">
+			<form action="/user/queryPage" id="pager">
+				<input type="hidden" name="pageSize" id="pageSize" value="${pageModel.pageSize }">
+				<input type="hidden" name="pageNum" id="pageNum" value="${pageModel.pageNum }">
+			</form>
+			<jsp:include page="/pageBar.jsp"></jsp:include>
+		</div>
 
 		<div class="tip">
 			<div class="tiptop">
@@ -127,7 +133,13 @@ $(document).ready(function(){
 
 	<script type="text/javascript">
 	$('.tablelist tbody tr:odd').addClass('odd');
+	function deleteUser(userID){
+		if(window.confirm("确定要删除吗")){
+			location.href="/user/delete?id="+userID;
+		}
+	}
 	</script>
+	
 
 	<div style="display: none">
 		<script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540'

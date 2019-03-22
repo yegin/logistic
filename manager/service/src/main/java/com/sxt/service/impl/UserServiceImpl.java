@@ -7,6 +7,8 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.sxt.dto.UserDto;
 import com.sxt.mapper.RoleMapper;
 import com.sxt.mapper.UserMapper;
@@ -44,7 +46,10 @@ public class UserServiceImpl implements IUserService{
 	@Override
 	public void deleteUser(int id) throws Exception {
 		// TODO Auto-generated method stub
+		
+		usermapper.deleteRoleIdByUserId(id);
 		usermapper.deleteByPrimaryKey(id);
+		
 	}
 	
 	/**
@@ -57,8 +62,13 @@ public class UserServiceImpl implements IUserService{
 		
 		RoleExample roleExample = new RoleExample();
 		List<Role> roles = roleMapper.selectByExample(roleExample);
+		if (id!=null&&id>0) {
+			User user = usermapper.selectByPrimaryKey(id);
+			List<Integer> roleIds = usermapper.selectRoleIdByUserId(id);
+			model.addAttribute("user", user);
+			model.addAttribute("roleIds", roleIds);
+		}
 		model.addAttribute("roles", roles);
-		
 	}
 
 	@Override
@@ -79,11 +89,39 @@ public class UserServiceImpl implements IUserService{
 			usermapper.insert(user);
 			// 再保存用户和角色的对应关系，在一个事务中处理
 			if(roles!=null && roles.size() > 0){
-				for (Integer roleId : roles) {
-					usermapper.inserUserIdAndRoleId(user.getUserId(),roleId);
+				usermapper.updateByPrimaryKeySelective(user);
+				
+				// 根据用户ID删除管理的角色信息
+				usermapper.deleteRoleIdByUserId(user.getUserId());
+				// 再保存用户和角色的关联关系
+				if(roles!=null && roles.size() > 0){
+					for (Integer roleId : roles) {
+						usermapper.inserUserIdAndRoleId(user.getUserId(),roleId);
+					}
+				}
+
+			}else{
+				// 不存在id说明是添加数据
+				// 先添加用户数据 获取生成的userId
+				usermapper.insert(user);
+				// 再保存用户和角色的对应关系，在一个事务中处理
+				if(roles!=null && roles.size() > 0){
+					for (Integer roleId : roles) {
+						usermapper.inserUserIdAndRoleId(user.getUserId(),roleId);
+					}
 				}
 			}
-			
 		}
 	}
+
+	@Override
+	public PageInfo<User> queryPage(UserDto dto) {
+		PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
+		List<User> list = this.query(dto.getUser());
+		PageInfo<User> pageInfo = new PageInfo<User>(list);
+		return pageInfo;
+	
+	}
 }
+	
+

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.github.pagehelper.PageInfo;
 import com.sxt.dto.UserDto;
 import com.sxt.pojo.User;
 import com.sxt.service.IUserService;
@@ -39,6 +40,26 @@ public class UserController {
 	public String saveOrUpdate(UserDto userDto) throws Exception{
 		userService.saveOrUpdate(userDto);
 		return "redirect:/user/query";
+	}
+	
+	/**
+	 * 根据id删除用户数据
+	 * 注意删除关联关系
+	 * @param id
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/delete")
+	public String deleteUser(Integer id) throws Exception{
+		userService.deleteUser(id);
+		return "redirect:/user/query";
+	}
+	
+	@RequestMapping("/queryPage")
+	public String queryPage(UserDto dto,Model model){
+		PageInfo<User> pageModel = userService.queryPage(dto);
+		model.addAttribute("pageModel", pageModel);
+		return "user/user";
 	}
 	
 	

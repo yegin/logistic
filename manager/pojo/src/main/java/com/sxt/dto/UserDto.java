@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.sxt.pojo.User;
 
-public class UserDto {
+public class UserDto extends BasePage{
 	public User user;
 	public List<Integer> roles;
 	public UserDto() {

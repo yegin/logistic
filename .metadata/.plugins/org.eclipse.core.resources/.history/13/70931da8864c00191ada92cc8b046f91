@@ -1,0 +1,9 @@
+package com.sxt.dto;
+
+public class BasePage {
+	
+	protected int pageNum=1;
+	
+	protected int pageSize=5;
+	
+}

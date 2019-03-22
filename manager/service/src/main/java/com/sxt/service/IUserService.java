@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.ui.Model;
 
+import com.github.pagehelper.PageInfo;
 import com.sxt.dto.UserDto;
 import com.sxt.pojo.User;
 
@@ -53,6 +54,14 @@ public interface IUserService {
 	 * 保存或修改数据
 	 * @param userDto
 	 */
-	public void saveOrUpdate(UserDto userDto);	
+	public void saveOrUpdate(UserDto userDto);
+
+	
+	/**
+	 * 查询分页数据
+	 * @param dto
+	 * @return
+	 */
+	public PageInfo<User> queryPage(UserDto dto);	
 	
 }
