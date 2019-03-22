@@ -110,6 +110,11 @@
       #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{phone,jdbcType=BIGINT}, 
       #{u1,jdbcType=VARCHAR}, #{u2,jdbcType=VARCHAR})
   </insert>
+<!--   添加用户或roleid -->
+  <insert id="inserUserIdAndRoleId">
+ 	insert into t_user_role(user_id,role_id)values(#{param1},#{param2})
+ </insert>
+ 
   <insert id="insertSelective" parameterType="com.sxt.pojo.User">
     insert into t_user
     <trim prefix="(" suffix=")" suffixOverrides=",">

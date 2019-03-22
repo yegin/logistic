@@ -1,0 +1,9 @@
+package com.sxt.dto;
+
+import com.sxt.pojo.User;
+
+public class UserDto {
+	public User user;
+	
+	public List<Integer> roles;
+}

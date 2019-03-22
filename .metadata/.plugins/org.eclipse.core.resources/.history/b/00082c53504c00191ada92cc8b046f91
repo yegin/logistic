@@ -1,0 +1,53 @@
+package com.sxt.service.impl;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+
+import com.sxt.mapper.UserMapper;
+import com.sxt.pojo.User;
+import com.sxt.pojo.UserExample;
+import com.sxt.service.IUserService;
+
+@Service
+public class UserServiceImpl implements IUserService{
+
+	@Resource
+	private UserMapper usermapper;
+	
+	@Override
+	public List<User> query(User user) {
+		// TODO Auto-generated method stub
+		return usermapper.selectByExample(new UserExample());
+	}
+
+	@Override
+	public void addUser(User user) throws Exception {
+		usermapper.insertSelective(user);
+	}
+
+	@Override
+	public void updateUser(User user) throws Exception {
+		usermapper.updateByPrimaryKey(user);
+	}
+
+	@Override
+	public void deleteUser(int id) throws Exception {
+		// TODO Auto-generated method stub
+		usermapper.deleteByPrimaryKey(id);
+	}
+	
+	/**
+	 * 获取添加或者修改信息所用到的信息
+	 * @param id
+	 * @param model
+	 */
+	@Override
+	public void getUpdateUserInfo(Integer id, Model model) {
+
+		
+	}
+}

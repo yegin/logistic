@@ -21,7 +21,7 @@ public class RoleController {
 		public String query(Role role,Model model){
 			List<Role> list = roleService.query(role);
 			model.addAttribute("list", list);
-			return "right";
+			return "role/role";
 		}
 	}
 
