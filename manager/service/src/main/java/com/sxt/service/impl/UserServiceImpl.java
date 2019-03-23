@@ -29,8 +29,13 @@ public class UserServiceImpl implements IUserService{
 	
 	@Override
 	public List<User> query(User user) {
-		// TODO Auto-generated method stub
-		return usermapper.selectByExample(new UserExample());
+		UserExample example = new UserExample();
+		if(user!=null){
+			if("".equals(user.getRealName())&&user.getUserName()!=null){
+				example.createCriteria().andUserNameEqualTo(user.getUserName());
+			}
+		}
+		return usermapper.selectByExample(example);
 	}
 
 	@Override

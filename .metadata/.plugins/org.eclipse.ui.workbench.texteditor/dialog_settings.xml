@@ -2,12 +2,15 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="utf-8" key="selection"/>
+		<item value="" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="pagehelper"/>
+			<item value="&lt;div class=&quot;inline pull-right page&quot; style=&quot;margin-top: 20px;&quot;&gt;&#x0A;&#x09;&lt;form action=&quot;/user/queryPage&quot; id=&quot;pager&quot;&gt;&#x0A;&#x09;&#x09;&lt;input type=&quot;hidden&quot; name=&quot;pageSize&quot; id=&quot;pageSize&quot; value=&quot;${pageModel.pageSize }&quot;&gt;&#x0A;&#x09;&#x09;&lt;input type=&quot;hidden&quot; name=&quot;pageNum&quot; id=&quot;pageNum&quot; value=&quot;${pageModel.pageNum }&quot;&gt;&#x0A;&#x09;&lt;/form&gt;&#x0A;&#x09;&lt;jsp:include page="/>
+			<item value="inserUserIdAndRoleId"/>
 			<item value="ISO-8859-1"/>
 		</list>
 		<list key="replacehistory">

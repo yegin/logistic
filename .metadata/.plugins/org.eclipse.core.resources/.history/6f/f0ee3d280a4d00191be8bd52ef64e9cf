@@ -1,0 +1,5 @@
+package com.sxt.realm;
+
+public class LoginRealm {
+
+}
