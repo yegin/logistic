@@ -105,7 +105,7 @@
 		$('.tablelist tbody tr:odd').addClass('odd');
 		function deleteUser(userId){
 			if(window.confirm("确定要删除该用户吗?")){
-				location.href="/user/delete?id="+userId;
+				location.href="/basic/delete?id="+userId;
 			}
 		}
 	</script>

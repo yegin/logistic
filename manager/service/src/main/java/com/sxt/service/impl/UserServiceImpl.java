@@ -31,11 +31,12 @@ public class UserServiceImpl implements IUserService{
 	public List<User> query(User user) {
 		UserExample example = new UserExample();
 		if(user!=null){
-			if(!"".equals(user.getRealName())&&user.getUserName()!=null){
+			if(!"".equals(user.getUserName())&&user.getUserName()!=null){
 				example.createCriteria().andUserNameEqualTo(user.getUserName());
 			}
 		}
-		return usermapper.selectByExample(example);
+		List<User> list = usermapper.selectByExample(example);
+		return list;
 	}
 
 	@Override
@@ -58,7 +59,7 @@ public class UserServiceImpl implements IUserService{
 	}
 	
 	/**
-	 * »ñÈ¡Ìí¼Ó»òÕßÐÞ¸ÄÐÅÏ¢ËùÓÃµ½µÄÐÅÏ¢
+	 * ï¿½ï¿½È¡ï¿½ï¿½Ó»ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 * @param id
 	 * @param model
 	 */
@@ -78,27 +79,27 @@ public class UserServiceImpl implements IUserService{
 
 	@Override
 	public void saveOrUpdate(UserDto userDto) {
-		// »ñÈ¡User¶ÔÏó
+		// ï¿½ï¿½È¡Userï¿½ï¿½ï¿½ï¿½
 		User user = userDto.getUser();
 		
-		// »ñÈ¡¹ØÁªµÄ½ÇÉ«ÐÅÏ¢
+		// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ä½ï¿½É«ï¿½ï¿½Ï¢
 		List<Integer> roles = userDto.getRoles();
 		
 		
-		// ÅÐ¶ÏÊÇÌí¼Ó»¹ÊÇÐÞ¸ÄÊý¾Ý
+		// ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½Ó»ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½
 		if(user.getUserId()!=null && user.getUserId() > 0){
-			// ±íÊ¾userId´æÔÚ£¬ËµÃ÷ÊÇ¸üÐÂ
+			// ï¿½ï¿½Ê¾userIdï¿½ï¿½ï¿½Ú£ï¿½Ëµï¿½ï¿½ï¿½Ç¸ï¿½ï¿½ï¿½
 		}else{
-			// ²»´æÔÚidËµÃ÷ÊÇÌí¼ÓÊý¾Ý
-			// ÏÈÌí¼ÓÓÃ»§Êý¾Ý »ñÈ¡Éú³ÉµÄuserId
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½idËµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¡ï¿½ï¿½ï¿½Éµï¿½userId
 			usermapper.insert(user);
-			// ÔÙ±£´æÓÃ»§ºÍ½ÇÉ«µÄ¶ÔÓ¦¹ØÏµ£¬ÔÚÒ»¸öÊÂÎñÖÐ´¦Àí
+			// ï¿½Ù±ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Í½ï¿½É«ï¿½Ä¶ï¿½Ó¦ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½
 			if(roles!=null && roles.size() > 0){
 				usermapper.updateByPrimaryKeySelective(user);
 				
-				// ¸ù¾ÝÓÃ»§IDÉ¾³ý¹ÜÀíµÄ½ÇÉ«ÐÅÏ¢
+				// ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½IDÉ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä½ï¿½É«ï¿½ï¿½Ï¢
 				usermapper.deleteRoleIdByUserId(user.getUserId());
-				// ÔÙ±£´æÓÃ»§ºÍ½ÇÉ«µÄ¹ØÁª¹ØÏµ
+				// ï¿½Ù±ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Í½ï¿½É«ï¿½Ä¹ï¿½ï¿½ï¿½ï¿½ï¿½Ïµ
 				if(roles!=null && roles.size() > 0){
 					for (Integer roleId : roles) {
 						usermapper.inserUserIdAndRoleId(user.getUserId(),roleId);
@@ -106,10 +107,10 @@ public class UserServiceImpl implements IUserService{
 				}
 
 			}else{
-				// ²»´æÔÚidËµÃ÷ÊÇÌí¼ÓÊý¾Ý
-				// ÏÈÌí¼ÓÓÃ»§Êý¾Ý »ñÈ¡Éú³ÉµÄuserId
+				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½idËµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¡ï¿½ï¿½ï¿½Éµï¿½userId
 				usermapper.insert(user);
-				// ÔÙ±£´æÓÃ»§ºÍ½ÇÉ«µÄ¶ÔÓ¦¹ØÏµ£¬ÔÚÒ»¸öÊÂÎñÖÐ´¦Àí
+				// ï¿½Ù±ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Í½ï¿½É«ï¿½Ä¶ï¿½Ó¦ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½
 				if(roles!=null && roles.size() > 0){
 					for (Integer roleId : roles) {
 						usermapper.inserUserIdAndRoleId(user.getUserId(),roleId);
@@ -132,6 +133,17 @@ public class UserServiceImpl implements IUserService{
 	public List<Role> queryRoleByUserId(int userId) {
 		// TODO Auto-generated method stub
 		return roleMapper.queryRoleByUserID(userId);
+	}
+
+	
+
+	/**
+	 * ï¿½ï¿½Ñ¯Òµï¿½ï¿½Ô±ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
+	 */
+	@Override
+	public List<User> queryByRoleName(String roleSalesman) {
+		// TODO Auto-generated method stub
+		return usermapper.queryUserByRoleName(roleSalesman);
 	}
 }
 	

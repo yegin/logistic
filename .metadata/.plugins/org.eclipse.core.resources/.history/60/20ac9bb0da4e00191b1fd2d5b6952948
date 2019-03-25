@@ -1,0 +1,40 @@
+package com.sxt.controller;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.sxt.service.ICustomerService;
+
+@Controller
+@RequestMapping("/customer")
+public class CustomerController {
+	
+	@Resource
+	private ICustomerService customerService;
+	
+	/**
+	 * 前端点击添加后，后端返回一个添加页面
+	 * @param id
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/customerUpdate")
+	public String customerUpdate(Integer id,Model model) {
+		customerService.getUpdateInfo(id, model);
+		return "customer/customerUpdate";
+	}
+	
+	
+	@RequestMapping("/saveOrUpdate")
+	public String saveOrUpdate(Integer id,Model model) {
+		customerService.getUpdateInfo(id, model);
+		return "customer/customerUpdate";
+	}
+	
+	
+	
+	
+}

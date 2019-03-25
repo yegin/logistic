@@ -1,0 +1,30 @@
+package com.sxt.service.impl;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+
+import com.sxt.service.IBasicService;
+import com.sxt.service.ICustomerService;
+import com.sxt.service.IUserService;
+
+@Service
+public class CustomerService implements ICustomerService {
+
+	@Resource
+	private ICustomerService customerService;
+	
+	@Resource
+	private IUserService userService;
+	
+	@Resource
+	private IBasicService basicService;
+	
+	@Override
+	public void getUpdateInfo(Integer id, Model m) {
+		
+		
+	}
+
+}

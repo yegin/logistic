@@ -1,0 +1,45 @@
+package com.sxt.service.impl;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+
+import com.sxt.service.IBasicService;
+import com.sxt.service.ICustomerService;
+import com.sxt.service.IUserService;
+import com.sxt.utils.Constant;
+
+@Service
+public class CustomerService implements ICustomerService {
+
+	@Resource
+	private ICustomerService customerService;
+	
+	@Resource
+	private IUserService userService;
+	
+	@Resource
+	private IBasicService basicService;
+	
+	@Override
+	public void getUpdateInfo(Integer id, Model m) {
+		
+//		查询所有业务员的用户信息
+		userService.queryByRoleName(Constant.ROLE_SALESMAN)
+		
+//		查询常用区间的基础数据
+		basicService.getBasicDataByParentName(Constant.BASIC_COMMON_INTERVAL)
+		
+		if(id!=null && id > 0){
+			// 查询更新需要的数据
+			Customer customer = customerMapper.selectByPrimaryKey(id);
+			m.addAttribute("customer", customer);
+		}
+		m.addAttribute("users", users);
+		m.addAttribute("intervals", intervals);
+	}
+
+	
+
+}

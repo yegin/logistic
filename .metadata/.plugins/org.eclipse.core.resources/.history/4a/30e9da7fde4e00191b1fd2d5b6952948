@@ -1,0 +1,91 @@
+package com.sxt.service.impl;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+
+import com.sxt.dto.CustomerDto;
+import com.sxt.pojo.BasicData;
+import com.sxt.pojo.Customer;
+import com.sxt.pojo.User;
+import com.sxt.service.IBasicService;
+import com.sxt.service.ICustomerService;
+import com.sxt.service.IUserService;
+import com.sxt.utils.Constant;
+
+@Service
+public class CustomerService implements ICustomerService {
+
+	@Resource
+	private ICustomerService customerMapper;
+	
+	@Resource
+	private IUserService userService;
+	
+	@Resource
+	private IBasicService basicService;
+	
+	/**
+	 * 获取前端页面提交的页面数据信息
+	 */
+	@Override
+	public void getUpdateInfo(Integer id, Model m) {
+		
+//		查询所有业务员的用户信息
+		List<User> users = userService.queryByRoleName(Constant.ROLE_SALESMAN);
+		
+//		查询常用区间的基础数据
+		List<BasicData> intervals = basicService.getBasicDataByParentName(Constant.BASIC_COMMON_INTERVAL);
+		
+		m.addAttribute("users", users);
+		m.addAttribute("intervals", intervals);
+		
+		if(id!=null && id > 0){
+			// 查询更新需要的数据
+			Customer customer = new Customer();
+			customer.setCustomerId(id);
+			 List<CustomerDto> list = customerMapper.queryView(customer);
+			
+			 if(list !=null && list.size() == 1){
+					m.addAttribute("dto", list.get(0));
+				}
+		}
+		
+	}
+
+	@Override
+	public List<Customer> query(CustomerDto dto) {
+		
+		return null;
+	}
+
+	@Override
+	public List<Customer> query(Customer customer) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void addCustomer(Customer customer) {
+		// TODO Auto-generated method stub
+		customerMapper.addCustomer(customer);
+	}
+
+	@Override
+	public void updateCustomer(Customer customer) {
+		// TODO Auto-generated method stub
+		customerMapper.updateCustomer(customer);
+	}
+
+	@Override
+	public void deleteCustomer(int id) {
+		// TODO Auto-generated method stub
+		customerMapper.deleteCustomer(id);
+	}
+
+	
+
+}

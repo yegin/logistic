@@ -20,13 +20,13 @@ public class LoginController {
 			System.out.println(ex.toString());
 		}
 		if (UnknownAccountException.class.getName().equals(ex)) {
-			System.out.println("----账号不正确----->");
+			System.out.println("----账号不正确-----+");
 			model.addAttribute("msg", "账号不正确");
 		} else if (IncorrectCredentialsException.class.getName().equals(ex)) {
 			System.out.println("----密码不正确----->");
 			model.addAttribute("msg", "密码不正确");
 		} else {
-			System.out.println("----其他错误----->");
+			System.out.println("----其他错误-----");
 			model.addAttribute("msg", "其他错误");
 		}
 		return "login";

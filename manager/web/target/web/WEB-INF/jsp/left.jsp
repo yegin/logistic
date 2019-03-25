@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -45,6 +46,11 @@ $(function(){
         <li class="active"><cite></cite><a href="/user/queryPage" target="rightFrame">用戶查詢</a><i></i></li>
         <li><cite></cite><a href="/role/query" target="rightFrame">角色查詢</a><i></i></li>
         <li><cite></cite><a href="/basic/queryPage" target="rightFrame">基础数据</a><i></i></li>
+       	
+       	<shiro:hasAnyRoles name="业务员,操作员">
+        	<li><cite></cite><a href="/customer/customerUpdate"  target="rightFrame">新增客户</a><i></i></li>
+        </shiro:hasAnyRoles>
+        
         <li><cite></cite><a href="imglist.html" target="rightFrame">图片列表</a><i></i></li>
         <li><cite></cite><a href="imglist1.html" target="rightFrame">自定义</a><i></i></li>
         <li><cite></cite><a href="tools.html" target="rightFrame">常用工具</a><i></i></li>
@@ -84,9 +90,7 @@ $(function(){
         <li><cite></cite><a href="#">信息列表</a><i></i></li>
         <li><cite></cite><a href="#">其他</a><i></i></li>
     </ul>
-    
     </dd>   
-    
     </dl>
     
 <div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>

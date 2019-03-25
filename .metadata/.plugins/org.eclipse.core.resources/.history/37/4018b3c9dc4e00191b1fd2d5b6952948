@@ -1,0 +1,13 @@
+package com.sxt.dto;
+
+public class CustomerDto extends BasePage{
+	
+	private BasePage basePage;
+	
+	// 业务员姓名
+	private String salesMan;
+	// 常用区间
+	private String interval;
+	// 客户具有的订单个数
+	private Integer orderNum;
+}

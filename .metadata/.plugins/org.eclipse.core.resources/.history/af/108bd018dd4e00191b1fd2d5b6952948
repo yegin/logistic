@@ -1,0 +1,20 @@
+package com.sxt.service;
+
+import java.util.List;
+
+import org.springframework.ui.Model;
+
+import com.sxt.dto.CustomerDto;
+import com.sxt.pojo.Customer;
+
+public interface ICustomerService {
+	
+	/**
+	 * 查询添加或更新的信息
+	 * @param id
+	 * @param m
+	 */
+	public void getUpdateInfo(Integer id,Model m);
+	
+	public List<Customer> query(CustomerDto dto);
+}

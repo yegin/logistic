@@ -27,4 +27,6 @@ public interface BasicDataMapper {
     int updateByPrimaryKeySelective(BasicData record);
 
     int updateByPrimaryKey(BasicData record);
+
+	List<BasicData> getBasicDataByParentName(String basicCommonInterval);
 }

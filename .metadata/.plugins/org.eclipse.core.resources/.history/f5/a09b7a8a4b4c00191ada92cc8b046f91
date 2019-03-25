@@ -1,7 +1,0 @@
-package com.sxt.service.impl;
-
-
-@service
-public class UserServiceImpl {
-
-}

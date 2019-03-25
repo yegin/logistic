@@ -1,0 +1,13 @@
+package com.sxt.service;
+
+import org.springframework.ui.Model;
+
+public interface ICustomerService {
+	
+	/**
+	 * 查询添加或更新的信息
+	 * @param id
+	 * @param m
+	 */
+	public void getUpdateInfo(Integer id,Model m);
+}

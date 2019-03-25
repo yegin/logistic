@@ -66,4 +66,13 @@ public class BasicServiceImpl implements IBasicService {
 		}
 	}
 
+	/**
+	 * 根据大类名查询出小类
+	 */
+	@Override
+	public List<BasicData> getBasicDataByParentName(String basicCommonInterval) {
+		// TODO Auto-generated method stub
+		return basicDataMapper.getBasicDataByParentName(basicCommonInterval);
+	}
+
 }

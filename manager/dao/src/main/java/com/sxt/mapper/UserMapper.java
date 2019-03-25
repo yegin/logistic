@@ -35,4 +35,6 @@ public interface UserMapper {
 	List<Integer> selectRoleIdByUserId(Integer id);
 
 	void deleteRoleIdByUserId(Integer userId);
+
+	List<User> queryUserByRoleName(String roleSalesman);
 }

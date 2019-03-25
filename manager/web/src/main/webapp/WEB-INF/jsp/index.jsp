@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -25,7 +26,10 @@
     
     <div class="welinfo">
     <span><img src="images/sun.png" alt="天气" /></span>
-    <b>Admin早上好，欢迎使用信息管理系统</b>(admin@uimaker.com)
+    <b>
+<!--     	相当于((User)Subject.getPrincipals()).getUsername() -->
+    	<shiro:principal property="userName"></shiro:principal>
+    </b>
     <a href="#">帐号设置</a>
     </div>
     

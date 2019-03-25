@@ -1,0 +1,15 @@
+package com.sxt.service.impl;
+
+import org.springframework.ui.Model;
+
+import com.sxt.service.ICustomerService;
+
+public class CustomerService implements ICustomerService {
+
+	@Override
+	public void getUpdateInfo(Integer id, Model m) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

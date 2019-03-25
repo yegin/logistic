@@ -10,41 +10,41 @@ import com.sxt.pojo.Role;
 import com.sxt.pojo.User;
 
 /**
- * ²éÑ¯ÓÃ»§½Ó¿Ú
+ * ï¿½ï¿½Ñ¯ï¿½Ã»ï¿½ï¿½Ó¿ï¿½
  * @author xnfcl
  *
  */
 public interface IUserService {
 	/**
-	 * ¸ù¾İÌõ¼ş²éÑ¯ÓÃ»§ĞÅÏ¢
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
 	 * @param user
 	 * @return
 	 */
 	public List<User> query(User user);
 	
 	/**
-	 * Ìí¼ÓÓÃ»§
+	 * ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
 	 * @param user
 	 * @throws Exception
 	 */
 	public void addUser(User user) throws Exception;
 	
 	/**
-	 * ĞŞ¸ÄÓÃ»§
+	 * ï¿½Ş¸ï¿½ï¿½Ã»ï¿½
 	 * @param user
 	 * @throws Exception
 	 */
 	public void updateUser(User user)throws Exception;
 	
 	/**
-	 * É¾³ıÓÃ»§
+	 * É¾ï¿½ï¿½ï¿½Ã»ï¿½
 	 * @param id
 	 * @throws Exception
 	 */
 	public void deleteUser(int id)throws Exception;
 	
 	/**
-	 * »ñÈ¡Ìí¼Ó»òÕßĞŞ¸ÄĞÅÏ¢ËùÓÃµ½µÄĞÅÏ¢
+	 * ï¿½ï¿½È¡ï¿½ï¿½Ó»ï¿½ï¿½ï¿½ï¿½Ş¸ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 * @param id
 	 * @param model
 	 */
@@ -52,24 +52,31 @@ public interface IUserService {
 
 	
 	/**
-	 * ±£´æ»òĞŞ¸ÄÊı¾İ
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ş¸ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @param userDto
 	 */
 	public void saveOrUpdate(UserDto userDto);
 
 	
 	/**
-	 * ²éÑ¯·ÖÒ³Êı¾İ
+	 * ï¿½ï¿½Ñ¯ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½
 	 * @param dto
 	 * @return
 	 */
 	public PageInfo<User> queryPage(UserDto dto);
 	
 	/**
-	 * ¸ù¾İÓÃ»§±àºÅ²éÑ¯È¨ÏŞĞÅÏ¢
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Å²ï¿½Ñ¯È¨ï¿½ï¿½ï¿½ï¿½Ï¢
 	 * @param userId
 	 * @return
 	 */
 	public List<Role> queryRoleByUserId(int userId);
+
 	
+	/*
+	 *ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½Ô±ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
+	 *æ ¹æ®è§’è‰²æŸ¥è¯¢æ‰€æœ‰id
+	 */
+	public List<User> queryByRoleName(String roleSalesman);
+
 }

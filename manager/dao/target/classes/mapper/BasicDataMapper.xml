@@ -142,6 +142,16 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
+  
+  
+<!--   根据区间的大类查询小类 -->
+<select id="getBasicDataByParentName" resultMap="BaseResultMap">
+	select *
+ 	from t_basicdata
+ 	where parent_id in (
+ 		select base_id from t_basicdata where base_name = #{param1}
+ 	)
+</select>
   <update id="updateByExampleSelective" parameterType="map">
     update t_basicdata
     <set>

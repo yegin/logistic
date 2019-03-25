@@ -1,0 +1,38 @@
+package com.sxt.service;
+
+import java.util.List;
+
+import org.springframework.ui.Model;
+
+import com.sxt.dto.CustomerDto;
+import com.sxt.pojo.Customer;
+
+public interface ICustomerService {
+	
+	/**
+	 * 查询添加或更新的信息
+	 * @param id
+	 * @param m
+	 */
+	public void getUpdateInfo(Integer id,Model m);
+	
+//	根据页面信息查询客户信息
+	public List<Customer> query(CustomerDto dto);
+	
+	//根据用户查询
+	public List<Customer> query(Customer customer);
+	
+	
+	//添加用户信息
+	public void addCustomer(Customer customer);
+	
+//	更新用户信息
+	public void updateCustomer(Customer customer);
+	
+//	删除用户信息
+	public void deleteCustomer(int id);
+
+	
+	//查询用户更新信息
+	public List<CustomerDto> queryView(Customer customer);
+}
