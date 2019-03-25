@@ -53,7 +53,11 @@
 						添加
 					</a>
 				</li>
-				<li class="click"><span><img src="/images/t02.png" /></span>修改</li>
+				<li class="click">
+<%-- 					<a href="/basic/basicUpdate"?id=${basic.baseId }> --%>
+							<span><img src="/images/t02.png" /></span>修改
+<!-- 					</a> -->
+				</li>
 				<li><span><img src="/images/t03.png" /></span>删除</li>
 				<li><span><img src="/images/t04.png" /></span>统计</li>
 			</ul>
@@ -101,7 +105,7 @@
 		$('.tablelist tbody tr:odd').addClass('odd');
 		function deleteUser(userId){
 			if(window.confirm("确定要删除该用户吗?")){
-				location.href="/user/delete?id="+userId;
+				location.href="/basic/delete?id="+userId;
 			}
 		}
 	</script>

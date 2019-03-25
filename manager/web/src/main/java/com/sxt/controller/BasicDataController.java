@@ -33,12 +33,25 @@ public class BasicDataController {
 		return "basic/basicUpdate";
 	}
 	
+	@RequestMapping("/delete")
+	public String delete(Integer id){
+		basicService.deleteBasicData(id);;
+		return "redirect:/basic/queryPage";
+	}
+	
 	@RequestMapping("/saveOrUpdate")
 	public String saveOrUpdate(BasicData bd){
 		if(bd.getParentId()==0){
 			bd.setParentId(null);
 		}
-		basicService.addBasicData(bd);
+		if (bd.getBaseId()!=null&&bd.getBaseId()>0) {
+			
+//			表示更新数据
+			basicService.updateBasicData(bd);
+		}else {
+			basicService.addBasicData(bd);
+		}
+		
 		return "redirect:/basic/queryPage";
 	}
 }
