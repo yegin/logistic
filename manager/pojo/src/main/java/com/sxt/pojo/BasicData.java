@@ -1,6 +1,7 @@
 package com.sxt.pojo;
 
 public class BasicData {
+	
     private Integer baseId;
 
     private Integer parentId;

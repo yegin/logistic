@@ -1,0 +1,14 @@
+package com.sxt.service;
+
+public interface IBasicService {
+public List<BasicData> query(BasicData bd);
+	
+	public PageInfo<BasicData> queryPage();
+	
+	public void addBasicData(BasicData bd);
+	
+	public void deleteBasicData(int id);
+	
+	public void updateBasicData(BasicData bd);
+
+}

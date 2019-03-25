@@ -31,7 +31,7 @@ public class UserServiceImpl implements IUserService{
 	public List<User> query(User user) {
 		UserExample example = new UserExample();
 		if(user!=null){
-			if("".equals(user.getRealName())&&user.getUserName()!=null){
+			if(!"".equals(user.getRealName())&&user.getUserName()!=null){
 				example.createCriteria().andUserNameEqualTo(user.getUserName());
 			}
 		}
@@ -126,6 +126,12 @@ public class UserServiceImpl implements IUserService{
 		PageInfo<User> pageInfo = new PageInfo<User>(list);
 		return pageInfo;
 	
+	}
+
+	@Override
+	public List<Role> queryRoleByUserId(int userId) {
+		// TODO Auto-generated method stub
+		return roleMapper.queryRoleByUserID(userId);
 	}
 }
 	

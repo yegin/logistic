@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,6 +50,7 @@ public class UserController {
 	 * @return
 	 * @throws Exception
 	 */
+	@RequiresRoles("π‹¿Ì‘±")
 	@RequestMapping("/delete")
 	public String deleteUser(Integer id) throws Exception{
 		userService.deleteUser(id);

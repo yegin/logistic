@@ -1,0 +1,17 @@
+package com.sxt.dto;
+
+import com.sxt.pojo.BasicData;
+
+public class BasicDataDto extends BasePage{
+
+	public BasicData basic;
+
+	public BasicData getBasic() {
+		return basic;
+	}
+
+	public void setBasic(BasicData basic) {
+		this.basic = basic;
+	}
+	
+}

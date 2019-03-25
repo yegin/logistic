@@ -1,0 +1,6 @@
+package com.sxt.dto;
+
+public class BasicDataDto extends BasePage{
+
+	
+}

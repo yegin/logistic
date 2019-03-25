@@ -17,3 +17,7 @@
 1553308885257	Extract local variable 'ex'
 1553309293732	Delete element
 1553309535409	Move file
+1553323522178	Extract local variable 'list'
+1553323554348	Extract local variable 'info'
+1553327444206	Move 'faild.jsp' to 'jsp'
+1553329570527	Move 'basic.jsp' to 'basic'
