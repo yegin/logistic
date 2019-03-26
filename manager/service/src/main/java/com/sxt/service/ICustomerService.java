@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.ui.Model;
 
+import com.github.pagehelper.PageInfo;
 import com.sxt.dto.CustomerDto;
 import com.sxt.pojo.Customer;
+import com.sxt.pojo.User;
 
 public interface ICustomerService {
 	
@@ -31,5 +33,10 @@ public interface ICustomerService {
 	
 //	ɾ���û���Ϣ
 	public void deleteCustomer(int id);
+	
+	//页面信息
+	public PageInfo<CustomerDto> queryPage(CustomerDto dto,User user);
+	
+	
 
 }

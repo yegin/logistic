@@ -1,14 +1,24 @@
 package com.sxt.dto;
 
+import com.sxt.pojo.Customer;
+
 public class CustomerDto extends BasePage{
 	
 	private BasePage basePage;
 	
-	// ÒµÎñÔ±ĞÕÃû
+	private Customer customer;
+	
+	public Customer getCustomer() {
+		return customer;
+	}
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+	// ä¸šåŠ¡å‘˜
 	private String salesMan;
-	// ³£ÓÃÇø¼ä
+	// å¸¸ç”¨åŒºé—´
 	private String interval;
-	// ¿Í»§¾ßÓĞµÄ¶©µ¥¸öÊı
+	// 
 	private Integer orderNum;
 	
 	public BasePage getBasePage() {

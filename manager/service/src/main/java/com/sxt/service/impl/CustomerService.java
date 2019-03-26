@@ -7,10 +7,13 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.sxt.dto.CustomerDto;
 import com.sxt.mapper.CustomerMapper;
 import com.sxt.pojo.BasicData;
 import com.sxt.pojo.Customer;
+import com.sxt.pojo.Role;
 import com.sxt.pojo.User;
 import com.sxt.service.IBasicService;
 import com.sxt.service.ICustomerService;
@@ -84,6 +87,39 @@ public class CustomerService implements ICustomerService {
 	public void deleteCustomer(int id) {
 		// TODO Auto-generated method stub
 		customerMapper.deleteByPrimaryKey(id);
+	}
+
+	
+	/**
+	 * 当前用户如果是  业务员 只能查看所属的客户
+	 * 如果是 操作员 或者 管理员 能查看所有的客户
+	 */
+	@Override
+	public PageInfo<CustomerDto> queryPage(CustomerDto dto, User user) {
+		// TODO Auto-generated method stub
+		
+		PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
+		
+		//获取角色信息
+		List<Role> list = userService.queryRoleByUserId(user.getUserId());
+		boolean flag=false;
+		if (list!=null&&list.size()>0) {
+			for (Role role : list) {
+				//如果是管理员
+				if (Constant.ROLE_ADMIN.equals(role.getRoleName())
+						||Constant.ROLE_OPERATOR.equals(role.getRoleName())) {
+					flag=true;
+					break;
+				}
+			}
+		}
+		Customer customer = new Customer();
+		if (flag==false) {
+			customer.setUserId(user.getUserId());
+		}
+		List<CustomerDto> customers = customerMapper.queryView(customer);
+		
+		return new PageInfo<>(customers);
 	}
 
 

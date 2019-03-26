@@ -3,3 +3,6 @@
 1553505029236	Extract local variable 'customer'
 1553505161400	Extract local variable 'list'
 1553505185708	Extract local variable 'list'
+1553607003390	Extract local variable 'list'
+1553607315158	Extract local variable 'customer'
+1553607466540	Extract local variable 'customers'

@@ -29,6 +29,6 @@ public interface CustomerMapper {
 
     int updateByPrimaryKey(Customer record);
 
-	//查询用户更新信息
+	//
 	public List<CustomerDto> queryView(Customer customer);
 }

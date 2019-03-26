@@ -51,6 +51,10 @@ $(function(){
         	<li><cite></cite><a href="/customer/customerUpdate"  target="rightFrame">新增客户</a><i></i></li>
         </shiro:hasAnyRoles>
         
+       	<shiro:hasAnyRoles name="业务员,操作员，管理员">
+        	<li><cite></cite><a href="/customer/query"  target="rightFrame">客户查询</a><i></i></li>
+        </shiro:hasAnyRoles>
+        
         <li><cite></cite><a href="imglist.html" target="rightFrame">图片列表</a><i></i></li>
         <li><cite></cite><a href="imglist1.html" target="rightFrame">自定义</a><i></i></li>
         <li><cite></cite><a href="tools.html" target="rightFrame">常用工具</a><i></i></li>

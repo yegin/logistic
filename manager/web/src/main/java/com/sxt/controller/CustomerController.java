@@ -4,12 +4,17 @@ import java.io.IOException;
 
 import javax.annotation.Resource;
 
+import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.github.pagehelper.PageInfo;
+import com.sxt.dto.CustomerDto;
 import com.sxt.pojo.Customer;
+import com.sxt.pojo.User;
 import com.sxt.service.ICustomerService;
+import com.sxt.utils.Constant;
 
 @Controller
 @RequestMapping("/customer")
@@ -19,7 +24,7 @@ public class CustomerController {
 	private ICustomerService customerService;
 	
 	/**
-	 * Ç°¶Ëµã»÷Ìí¼Óºó£¬ºó¶Ë·µ»ØÒ»¸öÌí¼ÓÒ³Ãæ
+	 * Ç°ï¿½Ëµï¿½ï¿½ï¿½ï¿½Óºó£¬ºï¿½Ë·ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½
 	 * @param id
 	 * @param model
 	 * @return
@@ -31,7 +36,7 @@ public class CustomerController {
 	}
 	
 	/**
-	 * ¸ù¾Ý´«À´µÄidÊý¾ÝÊÇ·ñÎª¿ÕÅÐ¶ÏÊÇÌí¼Ó»¹ÊÇÐÞ¸ÄÊý¾Ý
+	 * ï¿½ï¿½ï¿½Ý´ï¿½ï¿½ï¿½ï¿½ï¿½idï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½Ó»ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @param customer
 	 * @return
 	 * @throws IOException
@@ -39,14 +44,24 @@ public class CustomerController {
 	@RequestMapping("/saveOrUpdate")
 	public String saveOrUpdate(Customer customer) throws IOException  {
 		if (customer.getCustomerId()!=null&&!"".equals(customer.getCustomerId())) {
-			//¸üÐÂ²Ù×÷
+			//ï¿½ï¿½ï¿½Â²ï¿½ï¿½ï¿½
 			
 		}else{
 			customerService.addCustomer(customer);
 		}
-		
 		return "success";
 	}
+	
+	@RequestMapping("/query")
+	public String query(CustomerDto dto,Model model){
+		// èŽ·å–ç™»å½•ç”¨æˆ·ä¿¡æ¯
+		User user = (User) SecurityUtils.getSubject().getPrincipal();
+		System.out.println("--->"+user.getUserId());
+		PageInfo<CustomerDto> list = customerService.queryPage(dto,user);
+		model.addAttribute(Constant.PAGE_MODLE, list);
+		return "customer/customer";
+	}
+
 	
 	
 	

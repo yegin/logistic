@@ -44,7 +44,7 @@
 <fullyQualifiedTypeName name="java.io.IOException"/>
 <fullyQualifiedTypeName name="com.sxt.dto.BasePage"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="com.sxt.pojo.Customer"/>
 <fullyQualifiedTypeName name="com.sxt.dto.CustomerDto"/>
 <fullyQualifiedTypeName name="com.sxt.mapper.CustomerMapper"/>
+<fullyQualifiedTypeName name="com.sxt.pojo.Customer"/>
 </qualifiedTypeNameHistroy>

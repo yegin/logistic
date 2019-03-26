@@ -112,7 +112,7 @@
     <result column="real_name" jdbcType="VARCHAR" property="salesMan" />
     <result column="base_name" jdbcType="VARCHAR" property="interval" />
   </resultMap>
-
+  
   <select id="queryView" resultMap="baseCustomerDto" parameterType="com.sxt.pojo.Customer" >
   	select 
   			t1.customer_id
@@ -129,17 +129,14 @@
 			,t1.user_name
 			,t1.real_name
 			,t1.base_name 
-			,t1.num 
   	from v_customer t1
   	<where>
   		<if test="userId !=null and userId > 0">
   			user_id = #{userId}
   		</if>
-  		<if test="customerId!=null and customerId > 0">
-  			and customer_id = #{customerId}
-  		</if>
   	</where>
   </select>
+
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_customer
